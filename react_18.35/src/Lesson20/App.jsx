@@ -1,23 +1,47 @@
-import { useRef } from "react";
+import "./App.css";
 
-const App = () => {
-  const inputRef = useRef();
 
-  function crg() {
-    inputRef.current.style.background = "blue";
-  }
+function App() {
+  const handleSubmit= (e) => {
+    e.preventDefault();
+
+    console.log("Name:", e.target.name.value);
+    console.log("Surname:", e.target.surname.value);
+    console.log("Email:", e.target.email.value);
+    console.log("File:", e.target.file.files[0]);
+  };
 
   return (
-    <div>
-      <input ref={inputRef} type="text" onClick={crg} />
-    </div>
-  );
-};
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+      />
 
-export default App;    
-    
-   
-  
+      <input
+        type="text"
+        name="surname"
+        placeholder="Surname"
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+      />
+
+      <input
+        type="file"
+        name="file"
+      />
+
+      <button type="submit">Click</button> 
+    </form>
+  );
+}
+
+export default App;
       
 
  
